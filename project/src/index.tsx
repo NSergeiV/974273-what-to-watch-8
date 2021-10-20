@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {movieData} from './mocks/films';
 import App from './components/app/app';
 
 const Setting = {
@@ -12,7 +13,8 @@ const Setting = {
 ReactDOM.render(
   <React.StrictMode>
     <App
-      filmCard={Setting}
+      filmCard = {Setting}
+      movieData = {movieData}
     />
   </React.StrictMode>,
   document.getElementById('root'));

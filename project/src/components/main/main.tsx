@@ -1,4 +1,5 @@
-import FilmCard from '../film-card/film-card';
+import ListFilms from '../list-films/list-films';
+import {MovieData} from '../../types/movie-data';
 
 type MainScreenProps = {
   filmCard: {
@@ -7,9 +8,10 @@ type MainScreenProps = {
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
   };
+  movieData: MovieData;
 }
 
-function Main({filmCard}: MainScreenProps): JSX.Element {
+function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
   return (
     <div>
       <section className="film-card">
@@ -108,9 +110,7 @@ function Main({filmCard}: MainScreenProps): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {Array(filmCard.FILM_CARD_COUNT).fill(null).map((index) => <FilmCard key={index} />)}
-          </div>
+          <ListFilms {...movieData as MovieData}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
