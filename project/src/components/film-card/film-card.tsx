@@ -1,6 +1,9 @@
 import {DataFilm} from '../../types/movie-data';
+import {Link} from 'react-router-dom';
 
 function FilmCard(props: DataFilm): JSX.Element {
+
+  const route = `/films/${props.id}`;
 
   return (
     <article className="small-film-card catalog__films-card">
@@ -8,7 +11,7 @@ function FilmCard(props: DataFilm): JSX.Element {
         <img src={props.previewImage} alt={props.name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">{props.name}</a>
+        <Link className="small-film-card__link" to={route}>{props.name}</Link>
       </h3>
     </article>
   );

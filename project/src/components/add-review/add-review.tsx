@@ -1,6 +1,9 @@
 import Logo from '../logo/logo';
+import {Link} from 'react-router-dom';
+import {MovieData} from '../../types/movie-data';
 
-function AddReview(): JSX.Element {
+function AddReview(movieData: MovieData): JSX.Element {
+  const movieDataArray = Object.values(movieData);
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -18,7 +21,7 @@ function AddReview(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <Link to="/films/:id" className="breadcrumbs__link">{movieDataArray[1].name}</Link>
               </li>
               <li className="breadcrumbs__item">
                 <a className="breadcrumbs__link">Add review</a>
@@ -39,7 +42,7 @@ function AddReview(): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={movieDataArray[1].posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
         </div>
       </div>
 

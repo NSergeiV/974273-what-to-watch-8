@@ -35,17 +35,16 @@ function App({filmCard, movieData}: AppScreenProps): JSX.Element {
           <SignIn />
         </Route>
         <Route path={AppFilms.Film} exact>
-          <Film />
+          <Film {...movieData as MovieData} />
         </Route>
         <Route path={AppFilms.AddReview} exact>
-          <AddReview />
+          <AddReview {...movieData as MovieData} />
         </Route>
         <Route path={AppFilms.Player} exact>
-          <Player />
-          <AddReview />
+          <Player {...movieData as MovieData} />
         </Route>
-        <PrivateRoute path={AppFilms.MyList} exact render={() => <MyList />} authorizationStatus={AuthorizationStatus.NoAuth}>
-          <MyList />
+        <PrivateRoute path={AppFilms.MyList} exact render={() => <MyList {...movieData as MovieData}/>} authorizationStatus={AuthorizationStatus.Auth}>
+          <MyList {...movieData as MovieData} />
         </PrivateRoute>
         <Route>
           <ErrorScreen />
