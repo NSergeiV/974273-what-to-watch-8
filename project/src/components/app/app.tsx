@@ -34,8 +34,7 @@ function App({filmCard, movieData}: AppScreenProps): JSX.Element {
         <Route path={AppFilms.SignIn} exact>
           <SignIn />
         </Route>
-        <Route path={AppFilms.Film} exact>
-          <Film {...movieData as MovieData} />
+        <Route path={AppFilms.Film} exact component={() => <Film {...movieData as MovieData} />}>
         </Route>
         <Route path={AppFilms.AddReview} exact>
           <AddReview {...movieData as MovieData} />
