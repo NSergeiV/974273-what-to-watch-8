@@ -8,6 +8,7 @@ import Film from '../films/film';
 import AddReview from '../add-review/add-review';
 import Player from '../player/player';
 import PrivateRoute from '../private-route/private-route';
+import {MovieData} from '../../types/movie-data';
 
 type AppScreenProps = {
   filmCard: {
@@ -16,31 +17,33 @@ type AppScreenProps = {
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
   };
+  movieData: MovieData;
 }
 
-function App({filmCard}: AppScreenProps): JSX.Element {
-  // return <Main filmCard={filmCard} />;
+function App({filmCard, movieData}: AppScreenProps): JSX.Element {
+
   return (
     <BrowserRouter>
       <Switch>
         <Route path={AppFilms.Main} exact>
-          <Main filmCard={filmCard} />
+          <Main
+            filmCard = {filmCard}
+            movieData = {movieData}
+          />
         </Route>
         <Route path={AppFilms.SignIn} exact>
           <SignIn />
         </Route>
-        <Route path={AppFilms.Film} exact>
-          <Film />
+        <Route path={AppFilms.Film} exact component={() => <Film {...movieData as MovieData} />}>
         </Route>
         <Route path={AppFilms.AddReview} exact>
-          <AddReview />
+          <AddReview {...movieData as MovieData} />
         </Route>
         <Route path={AppFilms.Player} exact>
-          <Player />
-          <AddReview />
+          <Player {...movieData as MovieData} />
         </Route>
-        <PrivateRoute path={AppFilms.MyList} exact render={() => <MyList />} authorizationStatus={AuthorizationStatus.NoAuth}>
-          <MyList />
+        <PrivateRoute path={AppFilms.MyList} exact render={() => <MyList {...movieData as MovieData}/>} authorizationStatus={AuthorizationStatus.Auth}>
+          <MyList {...movieData as MovieData} />
         </PrivateRoute>
         <Route>
           <ErrorScreen />
