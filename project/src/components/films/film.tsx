@@ -1,7 +1,8 @@
 import Logo from '../logo/logo';
 import {Link} from 'react-router-dom';
 import ListFilms from '../list-films/list-films';
-import {MovieData} from '../../types/movie-data';
+import {MovieData, DataFilm} from '../../types/movie-data';
+import Tabs from '../tabs/tabs';
 
 function MoviePage(movieData: MovieData): JSX.Element {
 
@@ -74,37 +75,8 @@ function MoviePage(movieData: MovieData): JSX.Element {
               <img src={filmSearch.posterImage} alt={filmSearch.name} width="218" height="327" />
             </div>
 
-            <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="#" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+            <Tabs {...filmSearch as DataFilm}/>
 
-              <div className="film-rating">
-                <div className="film-rating__score">{filmSearch.rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">{filmSearch.rating >= 8 ? 'Very good' : 'Norm'}</span>
-                  <span className="film-rating__count">{filmSearch.scoresCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{filmSearch.description}</p>
-
-                <p className="film-card__director"><strong>Director: {filmSearch.director}</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: {filmSearch.starring.join(', ')}.</strong></p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
