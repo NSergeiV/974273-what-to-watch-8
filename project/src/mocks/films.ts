@@ -16,7 +16,7 @@ export const movieData: MovieData = [
     director: 'Wes Anderson',
     starring: ['Bill Murray', 'Edward Norton', 'Jude Law', 'Willem Dafoe', 'Saoirse Ronan'],
     runTime: 99,
-    genre: 'Comedy',
+    genre: 'Комедия',
     released: 2014,
     isFavorite: false,
   },

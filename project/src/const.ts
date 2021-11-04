@@ -13,3 +13,8 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const ClassLogo = {
+  LOGO_HEIGH: 'logo__link',
+  LOGO_FOOTER: 'logo__link logo__link--light',
+};

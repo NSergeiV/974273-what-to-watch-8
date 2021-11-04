@@ -2,19 +2,15 @@ import Logo from '../logo/logo';
 import {Link} from 'react-router-dom';
 import ListFilms from '../list-films/list-films';
 import {MovieData, DataFilm} from '../../types/movie-data';
+import {ClassLogo} from '../../const';
 import Tabs from '../tabs/tabs';
 
 const findSimilarMovies = (films: MovieData, genre: string) => {
   const movieDataArray = Object.values(films);
-  /* eslint-disable no-console */
-  console.log(movieDataArray);
   const copyMovies = movieDataArray.slice();
-  /* eslint-disable no-console */
-  console.log(copyMovies);
-  //console.log(films.genre, genre);
-  //const relatedMovies = copyMovies.sort((a, b) => (a.genre === genre ? 1 : 0) > (b.genre === genre ? 1 : 0) ? 1 : -1);
-  /* eslint-disable no-console */
-  //console.log(genre, relatedMovies);
+  const relatedMovies = copyMovies.sort((a, b) => (a.genre === genre ? 1 : 0) < (b.genre === genre ? 1 : 0) ? 1 : -1).slice(0, 4);
+
+  return relatedMovies;
 };
 
 function MoviePage(movieData: MovieData): JSX.Element {
@@ -40,7 +36,7 @@ function MoviePage(movieData: MovieData): JSX.Element {
 
           <header className="page-header film-card__head">
             <div className="logo">
-              <Logo />
+              <Logo classLogo={ClassLogo.LOGO_HEIGH} />
             </div>
 
             <ul className="user-block">
@@ -97,17 +93,12 @@ function MoviePage(movieData: MovieData): JSX.Element {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          {findSimilarMovies(movieData, filmSearch.genre)}
-          <ListFilms {...movieData as MovieData} />
+          <ListFilms {...findSimilarMovies(movieData, filmSearch.genre)} />
         </section>
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            <Logo classLogo={ClassLogo.LOGO_FOOTER} />
           </div>
 
           <div className="copyright">
