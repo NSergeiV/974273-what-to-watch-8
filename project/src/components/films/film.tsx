@@ -4,6 +4,19 @@ import ListFilms from '../list-films/list-films';
 import {MovieData, DataFilm} from '../../types/movie-data';
 import Tabs from '../tabs/tabs';
 
+const findSimilarMovies = (films: MovieData, genre: string) => {
+  const movieDataArray = Object.values(films);
+  /* eslint-disable no-console */
+  console.log(movieDataArray);
+  const copyMovies = movieDataArray.slice();
+  /* eslint-disable no-console */
+  console.log(copyMovies);
+  //console.log(films.genre, genre);
+  //const relatedMovies = copyMovies.sort((a, b) => (a.genre === genre ? 1 : 0) > (b.genre === genre ? 1 : 0) ? 1 : -1);
+  /* eslint-disable no-console */
+  //console.log(genre, relatedMovies);
+};
+
 function MoviePage(movieData: MovieData): JSX.Element {
 
   const movieDataArray = Object.values(movieData);
@@ -84,7 +97,8 @@ function MoviePage(movieData: MovieData): JSX.Element {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <ListFilms {...movieData as MovieData}/>
+          {findSimilarMovies(movieData, filmSearch.genre)}
+          <ListFilms {...movieData as MovieData} />
         </section>
 
         <footer className="page-footer">
