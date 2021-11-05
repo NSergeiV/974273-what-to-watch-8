@@ -1,13 +1,14 @@
 import Logo from '../logo/logo';
 import ListFilms from '../list-films/list-films';
 import {MovieData} from '../../types/movie-data';
+import {ClassLogo} from '../../const';
 
 function MyList(movieData: MovieData): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
         <div className="logo">
-          <Logo />
+          <Logo classLogo={ClassLogo.LOGO_HEIGH} />
         </div>
 
         <h1 className="page-title user-page__title">My list</h1>
@@ -31,11 +32,7 @@ function MyList(movieData: MovieData): JSX.Element {
 
       <footer className="page-footer">
         <div className="logo">
-          <a href="main.html" className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          <Logo classLogo={ClassLogo.LOGO_FOOTER} />
         </div>
 
         <div className="copyright">

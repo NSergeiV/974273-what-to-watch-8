@@ -2,6 +2,7 @@ import Logo from '../logo/logo';
 import {Link} from 'react-router-dom';
 import {MovieData} from '../../types/movie-data';
 import AddReviewForm from '../add-review-form/add-review-form';
+import {ClassLogo} from '../../const';
 
 function AddReview(movieData: MovieData): JSX.Element {
   const movieDataArray = Object.values(movieData);
@@ -24,7 +25,7 @@ function AddReview(movieData: MovieData): JSX.Element {
 
         <header className="page-header">
           <div className="logo">
-            <Logo />
+            <Logo classLogo={ClassLogo.LOGO_HEIGH} />
           </div>
 
           <nav className="breadcrumbs">

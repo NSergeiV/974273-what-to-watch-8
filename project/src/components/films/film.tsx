@@ -1,7 +1,17 @@
 import Logo from '../logo/logo';
 import {Link} from 'react-router-dom';
 import ListFilms from '../list-films/list-films';
-import {MovieData} from '../../types/movie-data';
+import {MovieData, DataFilm} from '../../types/movie-data';
+import {ClassLogo} from '../../const';
+import Tabs from '../tabs/tabs';
+
+const findSimilarMovies = (films: MovieData, genre: string) => {
+  const movieDataArray = Object.values(films);
+  const copyMovies = movieDataArray.slice();
+  const relatedMovies = copyMovies.sort((a, b) => (a.genre === genre ? 1 : 0) < (b.genre === genre ? 1 : 0) ? 1 : -1).slice(0, 4);
+
+  return relatedMovies;
+};
 
 function MoviePage(movieData: MovieData): JSX.Element {
 
@@ -26,7 +36,7 @@ function MoviePage(movieData: MovieData): JSX.Element {
 
           <header className="page-header film-card__head">
             <div className="logo">
-              <Logo />
+              <Logo classLogo={ClassLogo.LOGO_HEIGH} />
             </div>
 
             <ul className="user-block">
@@ -74,37 +84,8 @@ function MoviePage(movieData: MovieData): JSX.Element {
               <img src={filmSearch.posterImage} alt={filmSearch.name} width="218" height="327" />
             </div>
 
-            <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="#" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="#" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+            <Tabs {...filmSearch as DataFilm}/>
 
-              <div className="film-rating">
-                <div className="film-rating__score">{filmSearch.rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">{filmSearch.rating >= 8 ? 'Very good' : 'Norm'}</span>
-                  <span className="film-rating__count">{filmSearch.scoresCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{filmSearch.description}</p>
-
-                <p className="film-card__director"><strong>Director: {filmSearch.director}</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: {filmSearch.starring.join(', ')}.</strong></p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -112,16 +93,12 @@ function MoviePage(movieData: MovieData): JSX.Element {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <ListFilms {...movieData as MovieData}/>
+          <ListFilms {...findSimilarMovies(movieData, filmSearch.genre)} />
         </section>
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            <Logo classLogo={ClassLogo.LOGO_FOOTER} />
           </div>
 
           <div className="copyright">
