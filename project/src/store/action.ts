@@ -1,10 +1,26 @@
-import {ActionType, IncrementMistakeAction, IncrementStepAction} from '../types/action';
+import {ActionType, ChoosingComedyGenreAction, ChoosingCrimeGenreAction, ChoosingDocumentaryGenreAction, ChoosingDramaGenreAction, ChoosingHorrorGenreAction, ChoosingKidsFamilyGenreAction} from '../types/action';
 
-export const incrementMistake = (count: number): IncrementMistakeAction => ({
-  type: ActionType.IncrementMistake,
-  payload: count,
+export const choosingComedyGenre = (): ChoosingComedyGenreAction => ({
+  type: ActionType.ChoosingComedyGenre,
+  payload: 'Comedy',
 });
 
-export const incrementStep = (): IncrementStepAction => ({
-  type: ActionType.IncrementStep,
+export const choosingCrimeGenre = (): ChoosingCrimeGenreAction => ({
+  type: ActionType.ChoosingCrimeGenre,
+});
+
+export const choosingDocumentaryGenre = (): ChoosingDocumentaryGenreAction => ({
+  type: ActionType.ChoosingDocumentaryGenre,
+});
+
+export const choosingDramaGenreAction = (): ChoosingDramaGenreAction => ({
+  type: ActionType.ChoosingDramaGenre,
+});
+
+export const choosingHorrorGenre = (): ChoosingHorrorGenreAction => ({
+  type: ActionType.ChoosingHorrorGenre,
+});
+
+export const choosingKidsFamilyGenre = (): ChoosingKidsFamilyGenreAction => ({
+  type: ActionType.ChoosingKidsFamilyGenre,
 });
