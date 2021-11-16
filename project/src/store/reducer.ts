@@ -13,13 +13,13 @@ const reducer = (state: State = initialState, action: Actions): State => {
     case ActionType.ChoosingComedyGenre:
       return {...state, genre: action.payload, films: searchFilms('Comedy', state.films)};
     case ActionType.ChoosingCrimeGenre:
-      return {...state, films: searchFilms('Crime', state.films)};
+      return {...state, genre: action.payload, films: searchFilms('Crime', state.films)};
     case ActionType.ChoosingDocumentaryGenre:
-      return {...state, films: searchFilms('Documentary', state.films)};
+      return {...state, genre: action.payload, films: searchFilms('Documentary', state.films)};
     case ActionType.ChoosingDramaGenre:
-      return {...state, films: searchFilms('Drama', state.films)};
+      return {...state, genre: action.payload, films: searchFilms('Drama', state.films)};
     case ActionType.ChoosingHorrorGenre:
-      return {...state, films: searchFilms('Horror', state.films)};
+      return {...state, genre: action.payload, films: searchFilms('Horror', state.films)};
     case ActionType.ChoosingKidsFamilyGenre:
       return {...state, films: searchFilms(['Kids', 'Family'], state.films)};
     default:

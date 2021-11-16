@@ -7,18 +7,22 @@ export const choosingComedyGenre = (): ChoosingComedyGenreAction => ({
 
 export const choosingCrimeGenre = (): ChoosingCrimeGenreAction => ({
   type: ActionType.ChoosingCrimeGenre,
+  payload: 'Crime',
 });
 
 export const choosingDocumentaryGenre = (): ChoosingDocumentaryGenreAction => ({
   type: ActionType.ChoosingDocumentaryGenre,
+  payload: 'Documentary',
 });
 
-export const choosingDramaGenreAction = (): ChoosingDramaGenreAction => ({
+export const choosingDramaGenre = (): ChoosingDramaGenreAction => ({
   type: ActionType.ChoosingDramaGenre,
+  payload: 'Drama',
 });
 
 export const choosingHorrorGenre = (): ChoosingHorrorGenreAction => ({
   type: ActionType.ChoosingHorrorGenre,
+  payload: 'Horror',
 });
 
 export const choosingKidsFamilyGenre = (): ChoosingKidsFamilyGenreAction => ({
