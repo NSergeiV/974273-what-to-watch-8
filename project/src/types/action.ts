@@ -4,7 +4,11 @@ export enum ActionType {
   ChoosingDocumentaryGenre = 'films/genre/documentary',
   ChoosingDramaGenre = 'films/genre/drama',
   ChoosingHorrorGenre = 'films/genre/horror',
-  ChoosingKidsFamilyGenre = 'films/genre/kids_family',
+  ChoosingKidsFamilyGenre = 'films/genre/kids-family',
+  ChoosengRomanceGenre = 'films/genre/romance',
+  ChoosengSciFiGenre = 'films/genre/sci_fi',
+  ChoosengThrillerGenre = 'films/genre/thriller',
+  SelectAllGenre = 'films/genre/all'
 }
 
 export type ChoosingComedyGenreAction = {
@@ -31,4 +35,20 @@ export type ChoosingKidsFamilyGenreAction = {
   type: ActionType.ChoosingKidsFamilyGenre;
 };
 
-export type Actions = ChoosingComedyGenreAction | ChoosingCrimeGenreAction | ChoosingDocumentaryGenreAction | ChoosingDramaGenreAction | ChoosingHorrorGenreAction;
+export type ChoosengRomanceGenreAction = {
+  type: ActionType.ChoosengRomanceGenre;
+};
+
+export type ChoosengSciFiGenreAction = {
+  type: ActionType.ChoosengSciFiGenre;
+};
+
+export type ChoosengThrillerGenreAction = {
+  type: ActionType.ChoosengThrillerGenre;
+};
+
+export type SelectAllGenreAction = {
+  type: ActionType.SelectAllGenre;
+};
+
+export type Actions = ChoosingComedyGenreAction | ChoosingCrimeGenreAction | ChoosingDocumentaryGenreAction | ChoosingDramaGenreAction | ChoosingHorrorGenreAction | ChoosingKidsFamilyGenreAction | ChoosengRomanceGenreAction | ChoosengSciFiGenreAction | ChoosengThrillerGenreAction | SelectAllGenreAction;

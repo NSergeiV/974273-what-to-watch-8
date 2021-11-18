@@ -27,4 +27,24 @@ export const choosingHorrorGenre = (): ChoosingHorrorGenreAction => ({
 
 export const choosingKidsFamilyGenre = (): ChoosingKidsFamilyGenreAction => ({
   type: ActionType.ChoosingKidsFamilyGenre,
+  payload: 'Kids & Family',
+});
+
+export const choosengRomanceGenre = (): ChoosengRomanceGenreAction => ({
+  type: ActionType.ChoosengRomanceGenre,
+  payload: 'Romance'
+});
+
+export const choosengSciFiGenre = (): ChoosengSciFiGenreAction => ({
+  type: ActionType.ChoosengSciFiGenre,
+  payload: 'SciFi',
+});
+
+export const choosengThrillerGenre = (): ChoosengThrillerGenreAction => ({
+  type: ActionType.choosengThrillerGenre,
+  payload: 'Thriller',
+});
+
+export const selectAllGenreAction = (): SelectAllGenreAction => ({
+  type: ActionType.choosengThrillerGenre,
 });
