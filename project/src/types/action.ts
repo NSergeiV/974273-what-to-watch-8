@@ -6,6 +6,7 @@ export enum ActionType {
 
 export type ChoosingGenreAction = {
   type: ActionType.ChoosingGenre;
+  payload: string;
 };
 
 export type SelectAllGenreAction = {

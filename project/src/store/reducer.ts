@@ -1,16 +1,18 @@
 import {movieData} from '../mocks/films';
 import {ActionType, Actions} from '../types/action';
 import {State} from '../types/state';
-import {FIRST_GAME_STEP} from '../const';
+import {MovieData} from '../types/movie-data';
+// import {FIRST_GAME_STEP} from '../const';
 
 const initialState = {
   genre: 'All genres',
   films: movieData,
 };
 
-const findSimilarGenres = (genreSelected, listFilms) => {
+const findSimilarGenres = (genreSelected: string, listFilms: MovieData) => {
   const movieDataArray = Object.values(listFilms);
-  return const relatedMovies = movieDataArray.filter(dataFilm => dataFilm.genre === genreSelected);
+  const relatedMovies = movieDataArray.filter((dataFilm) => dataFilm.genre === genreSelected);
+  return relatedMovies;
 };
 
 const reducer = (state: State = initialState, action: Actions): State => {

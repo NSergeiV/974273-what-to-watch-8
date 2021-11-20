@@ -1,5 +1,6 @@
 import ListFilms from '../list-films/list-films';
 import {MovieData} from '../../types/movie-data';
+import {choosingGenre} from '../../store/action';
 
 type MainScreenProps = {
   filmCard: {
@@ -12,6 +13,14 @@ type MainScreenProps = {
 }
 
 function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
+  function handleClick(evt: any) {
+    evt.preventDefault();
+
+    /* eslint-disable no-console */
+    console.log(evt.target.textContent);
+
+    console.log(choosingGenre('Crime'));
+  }
   return (
     <div>
       <section className="film-card">
@@ -85,7 +94,12 @@ function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
               <a href="#" className="catalog__genres-link">Comedies</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
+              <a href="#" className="catalog__genres-link" onClick={
+                handleClick
+              }
+              >
+                  Crime
+              </a>
             </li>
             <li className="catalog__genres-item">
               <a href="#" className="catalog__genres-link">Documentary</a>
