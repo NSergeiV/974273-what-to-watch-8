@@ -35,7 +35,7 @@ export const movieData: MovieData = [
     director: 'Алехандро Гонсалес Иньярриту',
     starring: ['Leonardo DiCaprio', 'Tom Hardy', 'Domhnall Gleeson', 'Will Poulter', 'Paul Anderson'],
     runTime: 156,
-    genre: 'Драма',
+    genre: 'Drama',
     released: 2015,
     isFavorite: false,
   },

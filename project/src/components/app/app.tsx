@@ -16,26 +16,29 @@ type AppScreenProps = {
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
   };
+}
+
+type AppMoviProps = {
   movieData: MovieData;
 }
 
-function App(props: AppScreenProps): JSX.Element {
-  /* eslint-disable no-console */
-  console.log(props);
-  const {filmCard, movieData} = props;
+type ComplitMovieDataAppScriinProps = AppScreenProps & AppMoviProps;
 
-  console.log(filmCard, movieData);
+function App(props: ComplitMovieDataAppScriinProps): JSX.Element {
+  const {filmCard, movieData} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route path={AppFilms.Main} exact>
-          <Main {...filmCard} />
+          <Main
+            filmCard = {filmCard}
+          />
         </Route>
         <Route path={AppFilms.SignIn} exact>
           <SignIn />
         </Route>
-        <Route path={AppFilms.Film} exact component={() => <Film {...movieData as MovieData} />}>
+        <Route path={AppFilms.Film} exact component={() => <Film {...movieData} />}>
         </Route>
         <Route path={AppFilms.AddReview} exact>
           <AddReview {...movieData as MovieData} />

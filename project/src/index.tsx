@@ -15,9 +15,6 @@ const Setting = {
 
 const store = createStore(reducer, composeWithDevTools());
 
-/* eslint-disable no-console */
-console.log(store);
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store}>

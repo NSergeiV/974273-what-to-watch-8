@@ -18,33 +18,20 @@ const mapStateToProps = ({films}: State) => ({
   films,
 });
 
-/* eslint-disable no-console */
-console.log(mapStateToProps);
-
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
   handleClickGenre(evt: any) {
     evt.preventDefault();
-
-    /* eslint-disable no-console */
-    console.log(evt.target.textContent);
     const value = evt.target.textContent;
-
-    console.log(choosingGenre(value));
-    console.log('All genres' === value ? selectAllGenre() : choosingGenre(value));
     'All genres' === value ? dispatch(selectAllGenre()) : dispatch(choosingGenre(value));
   },
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-console.log(connector);
-
 type PropsFromRedux = ConnectedProps<typeof connector>;
-type ConnectedComponentProps = PropsFromRedux & MainScreenProps;
+type ConnectedComponentProps = MainScreenProps & PropsFromRedux;
 
 function Main(props: ConnectedComponentProps): JSX.Element {
-  /* eslint-disable no-console */
-  console.log(props);
 
   const {filmCard, films, handleClickGenre} = props;
 
@@ -171,4 +158,5 @@ function Main(props: ConnectedComponentProps): JSX.Element {
   );
 }
 
-export default Main;
+export {Main};
+export default connector(Main);
