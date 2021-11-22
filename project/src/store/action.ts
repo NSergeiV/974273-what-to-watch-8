@@ -5,6 +5,6 @@ export const choosingGenre = (genre: string): ChoosingGenreAction => ({
   payload: genre,
 });
 
-export const selectAllGenreAction = (): SelectAllGenreAction => ({
+export const selectAllGenre = (): SelectAllGenreAction => ({
   type: ActionType.SelectAllGenre,
 });

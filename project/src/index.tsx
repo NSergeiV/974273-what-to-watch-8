@@ -8,13 +8,15 @@ import App from './components/app/app';
 import {reducer} from './store/reducer';
 
 const Setting = {
-  FILM_CARD_COUNT: 20,
   FILM_CARD_TITLE: 'The Grand Budapest Hotel',
   FILM_CARD_GENRE: 'Drama',
   FILM_CARD_YEAN: 2014,
 };
 
 const store = createStore(reducer, composeWithDevTools());
+
+/* eslint-disable no-console */
+console.log(store);
 
 ReactDOM.render(
   <React.StrictMode>

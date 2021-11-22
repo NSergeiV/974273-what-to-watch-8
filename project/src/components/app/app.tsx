@@ -12,7 +12,6 @@ import {MovieData} from '../../types/movie-data';
 
 type AppScreenProps = {
   filmCard: {
-    FILM_CARD_COUNT: number,
     FILM_CARD_TITLE: string,
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
@@ -20,16 +19,18 @@ type AppScreenProps = {
   movieData: MovieData;
 }
 
-function App({filmCard, movieData}: AppScreenProps): JSX.Element {
+function App(props: AppScreenProps): JSX.Element {
+  /* eslint-disable no-console */
+  console.log(props);
+  const {filmCard, movieData} = props;
+
+  console.log(filmCard, movieData);
 
   return (
     <BrowserRouter>
       <Switch>
         <Route path={AppFilms.Main} exact>
-          <Main
-            filmCard = {filmCard}
-            movieData = {movieData}
-          />
+          <Main {...filmCard} />
         </Route>
         <Route path={AppFilms.SignIn} exact>
           <SignIn />
