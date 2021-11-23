@@ -2,7 +2,6 @@ import {movieData} from '../mocks/films';
 import {ActionType, Actions} from '../types/action';
 import {State} from '../types/state';
 import {MovieData} from '../types/movie-data';
-// import {FIRST_GAME_STEP} from '../const';
 
 const initialState = {
   genre: 'All genres',

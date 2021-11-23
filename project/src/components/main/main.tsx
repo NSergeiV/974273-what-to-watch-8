@@ -3,8 +3,8 @@ import {connect, ConnectedProps} from 'react-redux';
 import ListFilms from '../list-films/list-films';
 import {State} from '../../types/state';
 import {Actions} from '../../types/action';
-// import {MovieData} from '../../types/movie-data';
 import {choosingGenre, selectAllGenre} from '../../store/action';
+import GenresList from '../genres-list/genres-list';
 
 type MainScreenProps = {
   filmCard: {
@@ -99,6 +99,9 @@ function Main(props: ConnectedComponentProps): JSX.Element {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
+
+          {GenresList}
+          <GenresList />
 
           <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
