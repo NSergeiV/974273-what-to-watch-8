@@ -3,7 +3,13 @@ import {movieData} from '../../mocks/films';
 /* eslint-disable no-console */
 console.log(movieData);
 
-function GenresList(): JSX.Element {
+function GenresList(props: any): JSX.Element {
+
+  /* eslint-disable no-console */
+  console.log(props);
+
+  const {handleClickGenre} = props;
+
   const genresAllFilms = movieData.map((film) => film.genre);
   const genres = ['All genres', ...genresAllFilms];
   const uniqueSet = new Set(genres);
@@ -12,9 +18,9 @@ function GenresList(): JSX.Element {
   console.log(uniqListGenres);
 
   return (
-    <div className="catalog__films-list">
-      {}
-    </div>
+    <ul className="catalog__films-list">
+      {uniqListGenres.map((genreFilm) => <li key={genreFilm} className='catalog__genres-item'><a href="#" className="catalog__genres-link" onClick={handleClickGenre} >{genreFilm}</a></li>)}
+    </ul>
   );
 
 }

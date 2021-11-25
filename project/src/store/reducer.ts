@@ -17,7 +17,7 @@ const findSimilarGenres = (genreSelected: string, listFilms: MovieData) => {
 const reducer = (state: State = initialState, action: Actions): State => {
   switch (action.type) {
     case ActionType.ChoosingGenre:
-      return {...state, genre: action.payload, films: findSimilarGenres(action.payload, state.films)};
+      return {...state, genre: action.payload, films: findSimilarGenres(action.payload, initialState.films)};
     case ActionType.SelectAllGenre:
       return {...initialState};
     default:
