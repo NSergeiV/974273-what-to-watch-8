@@ -1,17 +1,45 @@
+import {Dispatch} from 'redux';
+import {connect, ConnectedProps} from 'react-redux';
 import ListFilms from '../list-films/list-films';
-import {MovieData} from '../../types/movie-data';
+import {State} from '../../types/state';
+import {Actions} from '../../types/action';
+import {choosingGenre, selectAllGenre} from '../../store/action';
+import GenresList from '../genres-list/genres-list';
 
 type MainScreenProps = {
   filmCard: {
-    FILM_CARD_COUNT: number,
     FILM_CARD_TITLE: string,
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
   };
-  movieData: MovieData;
 }
 
-function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
+const mapStateToProps = ({films}: State) => ({
+  films,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
+  handleClickGenre(evt: any) {
+    evt.preventDefault();
+    const allGenresList = document.querySelectorAll('.catalog__genres-item');
+    const value = evt.target.textContent;
+    if (!evt.target.closest('.catalog__genres-item--active')) {
+      allGenresList.forEach((item) => item.classList.remove('catalog__genres-item--active'));
+      evt.target.closest('li').classList.add('catalog__genres-item--active');
+    }
+    'All genres' === value ? dispatch(selectAllGenre()) : dispatch(choosingGenre(value));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedComponentProps = MainScreenProps & PropsFromRedux;
+
+function Main(props: ConnectedComponentProps): JSX.Element {
+
+  const {filmCard, films, handleClickGenre} = props;
+
   return (
     <div>
       <section className="film-card">
@@ -77,40 +105,9 @@ function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GenresList handleClickGenre={handleClickGenre} />
 
-          <ListFilms {...movieData as MovieData}/>
+          <ListFilms {...films}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -135,4 +132,5 @@ function Main({filmCard, movieData}: MainScreenProps): JSX.Element {
   );
 }
 
-export default Main;
+export {Main};
+export default connector(Main);

@@ -517,7 +517,7 @@ main {
 
 .catalog__genres-item {
   margin-right: 20px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;}
   .catalog__genres-item--active .catalog__genres-link {
     font-weight: bold; }
     .catalog__genres-item--active .catalog__genres-link::after {

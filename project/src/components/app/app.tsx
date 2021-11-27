@@ -12,15 +12,20 @@ import {MovieData} from '../../types/movie-data';
 
 type AppScreenProps = {
   filmCard: {
-    FILM_CARD_COUNT: number,
     FILM_CARD_TITLE: string,
     FILM_CARD_GENRE: string,
     FILM_CARD_YEAN: number,
   };
+}
+
+type AppMoviProps = {
   movieData: MovieData;
 }
 
-function App({filmCard, movieData}: AppScreenProps): JSX.Element {
+type ComplitMovieDataAppScriinProps = AppScreenProps & AppMoviProps;
+
+function App(props: ComplitMovieDataAppScriinProps): JSX.Element {
+  const {filmCard, movieData} = props;
 
   return (
     <BrowserRouter>
@@ -28,13 +33,12 @@ function App({filmCard, movieData}: AppScreenProps): JSX.Element {
         <Route path={AppFilms.Main} exact>
           <Main
             filmCard = {filmCard}
-            movieData = {movieData}
           />
         </Route>
         <Route path={AppFilms.SignIn} exact>
           <SignIn />
         </Route>
-        <Route path={AppFilms.Film} exact component={() => <Film {...movieData as MovieData} />}>
+        <Route path={AppFilms.Film} exact component={() => <Film {...movieData} />}>
         </Route>
         <Route path={AppFilms.AddReview} exact>
           <AddReview {...movieData as MovieData} />

@@ -2,13 +2,10 @@ import {useState, FormEvent, ChangeEvent} from 'react';
 
 function AddReviewForm(): JSX.Element {
   const [ratingStars, setRatingStars] = useState({star: 0, text: ''});
-  const {star, text} = ratingStars;
   return (
     <form action="#" className="add-review__form"
       onSubmit={(evt: FormEvent<HTMLFormElement>) => {
         evt.preventDefault();
-        /* eslint-disable no-console */
-        console.log({star, text});
       }}
     >
       <div className="rating">
