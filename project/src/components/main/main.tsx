@@ -23,12 +23,9 @@ const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
     evt.preventDefault();
     const allGenresList = document.querySelectorAll('.catalog__genres-item');
     const value = evt.target.textContent;
-    /* eslint-disable no-console */
-    allGenresList.forEach((it, b) => console.log(it.classList.contains('catalog__genres-item--active'), b));
-    console.log(evt.currentTarget.matches('.catalog__genres-item--active'));
-    console.log(evt.target.closest('.catalog__genres-item--active'));
     if (!evt.target.closest('.catalog__genres-item--active')) {
-      console.log('СРАБОТАЛО');
+      allGenresList.forEach((item) => item.classList.remove('catalog__genres-item--active'));
+      evt.target.closest('li').classList.add('catalog__genres-item--active');
     }
     'All genres' === value ? dispatch(selectAllGenre()) : dispatch(choosingGenre(value));
   },
@@ -40,9 +37,6 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type ConnectedComponentProps = MainScreenProps & PropsFromRedux;
 
 function Main(props: ConnectedComponentProps): JSX.Element {
-
-  /* eslint-disable no-console */
-  console.log(props);
 
   const {filmCard, films, handleClickGenre} = props;
 

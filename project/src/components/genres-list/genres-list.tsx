@@ -1,12 +1,6 @@
 import {movieData} from '../../mocks/films';
 
-/* eslint-disable no-console */
-console.log(movieData);
-
 function GenresList(props: any): JSX.Element {
-
-  /* eslint-disable no-console */
-  console.log(props);
 
   const {handleClickGenre} = props;
 
@@ -14,8 +8,6 @@ function GenresList(props: any): JSX.Element {
   const genres = [...genresAllFilms];
   const uniqueSet = new Set(genres);
   const uniqListGenres = Array.from(uniqueSet);
-
-  console.log(uniqListGenres);
 
   return (
     <ul className="catalog__genres-list">
