@@ -21,7 +21,15 @@ const mapStateToProps = ({films}: State) => ({
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => ({
   handleClickGenre(evt: any) {
     evt.preventDefault();
+    const allGenresList = document.querySelectorAll('.catalog__genres-item');
     const value = evt.target.textContent;
+    /* eslint-disable no-console */
+    allGenresList.forEach((it, b) => console.log(it.classList.contains('catalog__genres-item--active'), b));
+    console.log(evt.currentTarget.matches('.catalog__genres-item--active'));
+    console.log(evt.target.closest('.catalog__genres-item--active'));
+    if (!evt.target.closest('.catalog__genres-item--active')) {
+      console.log('СРАБОТАЛО');
+    }
     'All genres' === value ? dispatch(selectAllGenre()) : dispatch(choosingGenre(value));
   },
 });
